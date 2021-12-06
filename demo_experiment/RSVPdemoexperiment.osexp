@@ -1,0 +1,160 @@
+---
+API: 2.1
+OpenSesame: 3.3.11a1
+Platform: posix
+---
+set width 1024
+set uniform_coordinates yes
+set title "RSVP demo experiment"
+set subject_parity even
+set subject_nr 0
+set start experiment
+set sound_sample_size -16
+set sound_freq 48000
+set sound_channels 2
+set sound_buf_size 1024
+set sampler_backend psycho
+set round_decimals 2
+set mouse_backend psycho
+set keyboard_backend psycho
+set height 768
+set fullscreen no
+set form_clicks no
+set foreground white
+set font_underline no
+set font_size 18
+set font_italic no
+set font_family mono
+set font_bold no
+set experiment_path "/Volumes/GoogleDrive/My Drive/projecten_rug/CIT/RSVP_plugin/opensesame-plugin-RSVP"
+set disable_garbage_collection yes
+set description "The main experiment item"
+set coordinates uniform
+set compensation 0
+set color_backend psycho
+set clock_backend psycho
+set canvas_backend psycho
+set background black
+
+define notepad RSVP_demo
+	__note__
+	This experiment demonstrates the RSVP plugin
+	
+	If you have not yet installed the plugin, run the following command in your Opensesame console:
+	
+	pip.main(['install', 'opensesame-plugin-RSVP'])
+	
+	If you want to make sure you have the newest version of the plugin, you can upgrade it with the following command:
+	
+	pip.main(['install', 'opensesame-plugin-RSVP', '--upgrade'])
+	
+	If you have questions or feedback, please let me know @ robbertmijn@gmail.com
+	__end__
+	set description "A simple notepad to document your experiment. This plug-in does nothing."
+
+define RSVP_plugin RSVP_item
+	set description "Add an RSVP to your experiment"
+	set _targets "[T1];[T2]"
+	set _target_positions "[T1_pos];[T2_pos]"
+	set _stimdur 200
+	set _ntargets 2
+	set _ndistractors 15
+	set _fixdur 1000
+	set _distractors "1;2;3;4;5;6;7;8;9;1;2;3;4;5;6"
+
+define sketchpad ask_response
+	set duration 0
+	set description "Displays stimuli"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if=always text="How many letters did you see? <br /><br />1: press Z<br />2: press M" x=0 y=0 z_index=0
+
+define loop block_loop
+	set source_file ""
+	set source table
+	set repeat 1
+	set order random
+	set description "Repeatedly runs another item"
+	set cycles 10
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 T1 a
+	setcycle 0 T1_pos 5
+	setcycle 0 T2 "#"
+	setcycle 0 T2_pos 6
+	setcycle 0 correct_response z
+	setcycle 1 T1 b
+	setcycle 1 T1_pos 6
+	setcycle 1 T2 "$"
+	setcycle 1 T2_pos 8
+	setcycle 1 correct_response z
+	setcycle 2 T1 c
+	setcycle 2 T1_pos 7
+	setcycle 2 T2 "%"
+	setcycle 2 T2_pos 10
+	setcycle 2 correct_response z
+	setcycle 3 T1 d
+	setcycle 3 T1_pos 8
+	setcycle 3 T2 "^"
+	setcycle 3 T2_pos 12
+	setcycle 3 correct_response z
+	setcycle 4 T1 e
+	setcycle 4 T1_pos 9
+	setcycle 4 T2 "&"
+	setcycle 4 T2_pos 14
+	setcycle 4 correct_response z
+	setcycle 5 T1 a
+	setcycle 5 T1_pos 5
+	setcycle 5 T2 f
+	setcycle 5 T2_pos 6
+	setcycle 5 correct_response m
+	setcycle 6 T1 b
+	setcycle 6 T1_pos 6
+	setcycle 6 T2 g
+	setcycle 6 T2_pos 8
+	setcycle 6 correct_response m
+	setcycle 7 T1 c
+	setcycle 7 T1_pos 7
+	setcycle 7 T2 h
+	setcycle 7 T2_pos 10
+	setcycle 7 correct_response m
+	setcycle 8 T1 d
+	setcycle 8 T1_pos 8
+	setcycle 8 T2 i
+	setcycle 8 T2_pos 12
+	setcycle 8 correct_response m
+	setcycle 9 T1 e
+	setcycle 9 T1_pos 9
+	setcycle 9 T2 j
+	setcycle 9 T2_pos 14
+	setcycle 9 correct_response m
+	run trial_sequence
+
+define sequence experiment
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run RSVP_demo always
+	run block_loop always
+
+define feedback feedback
+	set reset_variables yes
+	set duration 500
+	set description "Provides feedback to the participant"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if="[correct] = 1" text="Correct!" x=0 y=0 z_index=0
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if="[correct] = 0" text="Incorrect!" x=0 y=0 z_index=0
+
+define keyboard_response get_response
+	set timeout infinite
+	set flush yes
+	set event_type keypress
+	set duration keypress
+	set description "Collects keyboard responses"
+	set allowed_responses "z;m"
+
+define sequence trial_sequence
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run RSVP_item always
+	run ask_response always
+	run get_response always
+	run feedback always
+

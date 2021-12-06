@@ -12,11 +12,11 @@ setup(
 	# Some general metadata. By convention, a plugin is named:
 	# opensesame-plugin-[plugin name]
 	name='opensesame-plugin-RSVP',
-	version='0.0.2',
+	version='0.0.3',
 	description='Add an RSVP task to an OpenSesame experiment',
 	author='Robbert van der Mijn',
 	author_email='robbertmijn@gmail.com',
-	url='https://github.com/your/repository',
+	url='https://github.com/robbertmijn/opensesame-plugin-RSVP',
 	# Classifiers used by PyPi if you upload the plugin there
 	classifiers=[
 		'Intended Audience :: Science/Research',

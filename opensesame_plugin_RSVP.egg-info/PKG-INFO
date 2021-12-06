@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: opensesame-plugin-RSVP
-Version: 0.0.2
+Version: 0.0.3
 Summary: Add an RSVP task to an OpenSesame experiment
-Home-page: https://github.com/your/repository
+Home-page: https://github.com/robbertmijn/opensesame-plugin-RSVP
 Author: Robbert van der Mijn
 Author-email: robbertmijn@gmail.com
 License: UNKNOWN

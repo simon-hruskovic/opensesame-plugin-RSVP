@@ -12,7 +12,7 @@ setup(
 	# Some general metadata. By convention, a plugin is named:
 	# opensesame-plugin-[plugin name]
 	name='opensesame-plugin-RSVP',
-	version='0.0.3',
+	version='0.4',
 	description='Add an RSVP task to an OpenSesame experiment',
 	author='Robbert van der Mijn',
 	author_email='robbertmijn@gmail.com',

@@ -33,7 +33,7 @@ class RSVP_plugin(item):
 		self.var._ntargets = 2
 		self.var._ndistractors = 15
 		self.var._target_positions = u'5;7'
-		self.var._stimdur = 300
+		self.var._stimdur = 100
 		self.var._fixdur = 1000
 		# self.var._event_handler = u'print(10)'
 

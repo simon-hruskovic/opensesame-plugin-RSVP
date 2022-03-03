@@ -2,7 +2,11 @@
 
 ## About
 
-This plugin allows you to add a Rapid Servial Visual Presentation element to your experiment
+This plugin allows you to add a Rapid Servial Visual Presentation element to your experiment.
+
+## Usage
+
+Todo
 
 ## License
 

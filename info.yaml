@@ -1,0 +1,87 @@
+description: RSVP plug-in.
+version: 0.3
+author: "Robbert van der Mijn"
+url: "http://robbertmijn.nl/"
+category: "Visual stimuli"
+date: "2021"
+controls:
+-
+    type: "combobox"
+    var: "_tar_option"
+    label: "Targets type"
+    options:
+    - "Images"
+    - "Text / Symbols"
+    name: "targets_widget_choice"
+    tooltip: "Choose what type of target you want to use"
+-
+    type: "line_edit"
+    var: "_targets"
+    label: "Targets preview"
+    name: "targets_widget"
+    tooltip: "Shows targets that will be used"
+-
+    type: "line_edit"
+    var: "_ntargets"
+    label: "Number of targets"
+    name: "ntargets_widget"
+    prefix: ""
+    suffix: ""
+    tooltip: "Enter the number of targets in the stream"
+-
+    type: "combobox"
+    var: "_dis_option"
+    label: "Distractors type"
+    options:
+    - "Images"
+    - "Text / Symbols"
+    name: "distractors_widget_choice"
+    tooltip: "Choose what type of distractor you want to use"
+-
+    type: "line_edit"
+    var: "_distractors"
+    label: "Distractors preview"
+    name: "distractors_widget"
+    tooltip: "Shows distractors that will be used"
+
+-
+    type: "line_edit"
+    var: "_ndistractors"
+    label: "Number of distractors"
+    name: "ndistractors_widget"
+    prefix: ""
+    suffix: ""
+    tooltip: "Enter the number of distrators in the stream"
+-
+    type: "spinbox"
+    var: "_stimdur"
+    label: "Stimulus Duration"
+    min_val: 0
+    max_val: 100000
+    name: "stimdur_widget"
+    prefix: ""
+    suffix: "ms"
+    tooltip: "Duration of each of the stimuli"
+-
+    type: "spinbox"
+    var: "_fixdur"
+    label: "Fixation Duration"
+    min_val: 0
+    max_val: 100000
+    name: "fixdur_widget"
+    prefix: ""
+    suffix: "ms"
+    tooltip: "Duration of fixation before the RSVP"
+-
+    type: "line_edit"
+    var: "_target_positions"
+    label: "Positions of the targets"
+    name: "target_positions_widget"
+    tooltip: "Enter target positions, use ; to separate. Example: '5;6'"
+# -
+#     type: "editor"
+#     var: "_event_handler"
+#     label: "Run this code during the RSVP"
+#     name: "event_handler"
+#     syntax: true
+#     tooltip: "Insert python code that will be executed before each presentation"
